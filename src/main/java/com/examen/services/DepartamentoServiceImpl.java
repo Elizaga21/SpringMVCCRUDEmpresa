@@ -1,0 +1,42 @@
+package com.examen.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.examen.dao.DepartamentoDao;
+import com.examen.entities.Departamento;
+
+@Service
+public class DepartamentoServiceImpl implements DepartamentoService {
+
+
+    @Autowired DepartamentoDao departamentoDao;
+
+    @Override
+    public List<Departamento> findAll() {
+        return departamentoDao.findAll();
+    }
+
+    @Override
+    public Departamento findById(int idDepartamento) {
+        return departamentoDao.findById(idDepartamento).get();
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int idDepartamento) {
+        departamentoDao.deleteById(idDepartamento);
+
+    }
+
+    @Override
+    @Transactional
+    public void save(Departamento departamento) {
+        departamentoDao.save(departamento);
+    }
+    
+}
