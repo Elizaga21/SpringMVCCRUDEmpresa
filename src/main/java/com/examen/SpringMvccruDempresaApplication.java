@@ -57,7 +57,7 @@ public class SpringMvccruDempresaApplication implements CommandLineRunner {
 		empleadoService.save(
 			Empleado.builder()
 			.nombre("Juan")
-			.apellidos("Martinez")
+			.apellidos("Martinez Garcia")
 			.fechaAlta(LocalDate.of(1978, 06, 14))
 			.id(1)
 			.genero(Genero.HOMBRE)
