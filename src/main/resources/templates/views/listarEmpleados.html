@@ -8,9 +8,10 @@
 
     <title>Listado</title>
 </head>
-<body>
-    <h1>Listado de Empleados </h1>
-    <table>
+<body >
+    <h1 class="text-center">Listado de Empleados </h1>
+    <div class="container text-center">
+    <table class="table table-dark table-hover">
         <thead> 
            <tr>
 
@@ -19,6 +20,7 @@
           <th>Apellidos</th>
           <th>Fecha de Alta</th>
           <th>Genero</th>
+          <th>Acciones</th>
           
 
            </tr> 
@@ -34,15 +36,16 @@
                 <td th:text="${empleado.genero}"> </td>
 
                 <td>
-                    <a th:href="@{/frmActualizar/}+${empleado.id}">Actualizar</a>
-                    <a th:href="@{/borrar/}+${empleado.id}">Borrar</a>
-                    <a th:href="@{/detalles/}+${empleado.id}">Detalles</a>
+                    <a th:href="@{/frmActualizar/}+${empleado.id}" class="btn btn-light">Actualizar</a>
+                    <a th:href="@{/borrar/}+${empleado.id}" class="btn btn-light">Borrar</a>
+                    <a th:href="@{/detalles/}+${empleado.id}" class="btn btn-light">Detalles</a>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div>
-        <a th:href="@{/frmAltaEmpleado}">Formulario de Alta Empleado</a>
+</div>
+    <div class="container text-center">
+        <a th:href="@{/frmAltaEmpleado}" class="btn btn-primary" >Formulario de Alta Empleado</a>
         
 
     </div>
