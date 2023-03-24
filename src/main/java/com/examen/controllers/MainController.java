@@ -188,9 +188,34 @@ public class MainController {
         empleadoService.delete(empleadoService.findById(idEmpleado));
 
         return "redirect:/listar";
-
-    
-
     }
+
+     /**
+         * Método que muestra los detalles
+         */
+
+         @GetMapping("/detalles/{id}") 
+         public String detallesEmpleado(@PathVariable(name = "id") int idEmpleado, Model model) {
+            
+            Empleado empleado = empleadoService.findById(idEmpleado);
     
+            List<Telefono> telefonos = telefonoService.findByEmpleado(empleado);
+
+            List<Correo> correos = correoService.findByEmpleado(empleado);
+    
+            List<String> numerosTelefonos = telefonos.stream()
+            .map(t -> t.getNumero())
+            .collect(Collectors.toList());
+
+            List<String> correosEmpleado = correos.stream().map(c -> c.getEmail())
+            .collect(Collectors.toList());
+    
+            model.addAttribute("empleado", empleado);
+            model.addAttribute("telefonos", numerosTelefonos);
+            model.addAttribute("correos", correosEmpleado);
+    
+            return "views/empleadoDetalles";
+    
+    
+}
 }
