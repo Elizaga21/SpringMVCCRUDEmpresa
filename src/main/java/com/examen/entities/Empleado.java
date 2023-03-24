@@ -37,7 +37,6 @@ public class Empleado implements Serializable {
     
     private int id;
     private String nombre;
-    @NotNull(message = "El nombre no puede ser Null")
 
     private String apellidos;
     

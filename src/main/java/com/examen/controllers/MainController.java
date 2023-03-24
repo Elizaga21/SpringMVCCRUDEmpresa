@@ -81,7 +81,7 @@ public class MainController {
 
     @PostMapping("/altaModificacionEmpleado")
     public String altaEmpleado (@ModelAttribute Empleado empleado,
-            @RequestParam (name = "numerosTelefonos") String telefonosRecibidos,
+            @RequestParam (name = "numerosTelefonos") String telefonosRecibidos, //Se debe poner estos nombres en el formulario
             @RequestParam (name = "correosEmpleados") String correosRecibidos) { 
 
         LOG.info("Telefonos recibidos: " + telefonosRecibidos);
@@ -142,7 +142,7 @@ public class MainController {
         return correosRecibidos;
 
             }
-        /**
+    /**
      * Actualiza un empleado
      */
 
@@ -164,7 +164,7 @@ public class MainController {
         String numerosDeTelefono = telefonosDelEmpleado.stream()
                 .map(telefono -> telefono.getNumero()).collect(Collectors.joining(";"));
 
-        String correos = correosDelEmpleado.stream().map(correo -> correo.getEmail())
+        String listaCorreos = correosDelEmpleado.stream().map(correo -> correo.getEmail())
         .collect(Collectors.joining(","));       
 
         List<Departamento> departamentos = departamentoService.findAll();
@@ -172,7 +172,7 @@ public class MainController {
         // Model se utiliza para rellenar el formulario con datos
         model.addAttribute("empleado", empleado);
         model.addAttribute("telefonos", numerosDeTelefono);
-        model.addAttribute("correos", correos);
+        model.addAttribute("correos", listaCorreos);
         model.addAttribute("departamentos", departamentos);
 
         return "views/formularioAltaEmpleado";

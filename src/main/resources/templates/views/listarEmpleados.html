@@ -10,7 +10,6 @@
 </head>
 <body>
     <h1>Listado de Empleados </h1>
-    
     <table>
         <thead> 
            <tr>
@@ -33,10 +32,9 @@
                 <td th:text="${empleado.apellidos}"> </td>
                 <td th:text="${empleado.fechaAlta}"> </td>
                 <td th:text="${empleado.genero}"> </td>
-                <td th:text="${empleado.departamento}"> </td>
 
                 <td>
-                    <a th:href="@{/frmActualizar/}+${empleadoid}">Actualizar</a>
+                    <a th:href="@{/frmActualizar/}+${empleado.id}">Actualizar</a>
                     <a th:href="@{/borrar/}+${empleado.id}">Borrar</a>
                     <a th:href="@{/detalles/}+${empleado.id}">Detalles</a>
                 </td>
